@@ -33,10 +33,10 @@ class QuanLySinhVien:
             sex = input("Nhập giới tính sinh viên: ")
             major = input("Nhập chuyên ngành của sinh viên: ")
             diemTB = float(input("Nhập điểm của sinh viên: "))
-            sv.name = name
-            sv.sex = sex
-            sv.major = major
-            sv.diemTB = diemTB
+            sv._name = name
+            sv._sex = sex
+            sv._major = major
+            sv._diemTB = diemTB
             self.XepLoaiHocLuc(sv)
         else:
             print("Sinh vien co ID = {} khong ton tai.".format(ID))
@@ -45,7 +45,7 @@ class QuanLySinhVien:
         self.listSinhVien.sort(key=lambda x: x._id, reverse=False)
         
     def sortByName(self):
-        self.listSinhVienV.sort(key=lambda x: x._name, reverse=False)
+        self.listSinhVien.sort(key=lambda x: x._name, reverse=False)
         
     def sortByDiemTB(self):
         self.listSinhVien.sort(key=lambda x: x._diemTB, reverse=False)
@@ -82,44 +82,16 @@ class QuanLySinhVien:
         elif(sv._diemTB >= 5):
             sv._hocLuc = "Trung Binh"
         else:
-            sv.hocLuc = "Yeu"
+            sv._hocLuc = "Yeu"
             
-    def ShowSinhVien(self,ListSV):
-        print("{:<8} {:<18} {:<8} {:<15} {:<8} {:<8}"
-              .format("ID","Name","Set","Major","Điểm TB","Học Lực"))
+    def ShowSinhVien(self, ListSV):
+        print("{:<8} {:<18} {:<8} {:<8} {:<8} {:<8}"
+              .format("ID", "Name", "Sex", "Major", "Điem TB", "Hoc Luc"))
         if(ListSV.__len__() > 0):
             for sv in ListSV:
-                print("{:<8} {:<18} {:<8} {:<15} {:<8} {:<8}"
-                      .format(sv._id,sv._name,sv._sex,sv._major,sv._diemTB,sv._hocLuc))
+                print("{:<8} {:<18} {:<8} {:<8} {:<8} {:<8}"
+                      .format(sv._id, sv._name, sv._sex, sv._major, sv._diemTB, sv._hocLuc))
         print("\n")
         
     def getListSinhVien(self):
         return self.listSinhVien
-    
-    
-      
-
-
-    def xoaSinhVien(self,ID):
-        for i in range(self.soLuongSinhVien()):
-            if(self.listSV[i].id == ID):
-                self.listSV.pop(i)
-                return True
-        return False
-    
-
-    def timSinhVienByName(self,name):
-        for i in range(self.soLuongSinhVien()):
-            if(self.listSV[i].name == name):
-                return self.listSV[i]
-        return None
-                
-
-    def timSinhVienByID(self,ID):
-        for i in range(self.soLuongSinhVien()):
-            if(self.listSV[i].id == ID):
-                return self.listSV[i]
-        return None
-    
-
-    
