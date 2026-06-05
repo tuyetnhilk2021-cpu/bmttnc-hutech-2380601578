@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Cipher</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <style>
+        body{
+            background-color:#dfefff;
+            font-family: Arial, sans-serif;
+        }
+
+        .main-box{
+            max-width:800px;
+            margin:40px auto;
+        }
+
+        .page-title{
+            text-align:center;
+            color:#0d47a1;
+            font-size:34px;
+            font-weight:bold;
+            margin-bottom:30px;
+        }
+
+        .cipher-card{
+            background:white;
+            border:none;
+            border-radius:15px;
+            padding:25px;
+            margin-bottom:25px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .section-title{
+            color:#1565c0;
+            font-size:22px;
+            font-weight:bold;
+            border-left:5px solid #1565c0;
+            padding-left:10px;
+            margin-bottom:20px;
+        }
+
+        .form-control{
+            border-radius:10px;
+        }
+
+        .btn-custom{
+            background-color:#1565c0;
+            color:white;
+            border:none;
+            border-radius:10px;
+            padding:10px 25px;
+            transition:0.3s;
+        }
+
+        .btn-custom:hover{
+            background-color:#0d47a1;
+            color:white;
+        }
+
+        .back-btn{
+            margin-bottom:20px;
+        }
+
+        .footer{
+            text-align:center;
+            color:#666;
+            margin-top:15px;
+            margin-bottom:20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container main-box">
+
+    <a href="/" class="btn btn-outline-primary back-btn">
+        ← Trang chủ
+    </a>
+
+    <div class="page-title">
+        CAESAR CIPHER
+    </div>
+
+    <!-- ENCRYPTION -->
+    <div class="cipher-card">
+
+        <div class="section-title">
+            Encryption
+        </div>
+
+        <form method="POST" action="caesar/encrypt">
+
+            <div class="form-group">
+                <label><strong>Plain Text</strong></label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    name="inputPlainText"
+                    placeholder="Enter Plain Text"
+                    pattern="[A-Za-z ]+"
+                    title="Only letters and spaces are allowed"
+                    required
+                    autofocus>
+            </div>
+
+            <div class="form-group">
+                <label><strong>Key</strong></label>
+
+                <input
+                    type="number"
+                    class="form-control"
+                    name="inputKeyPlain"
+                    placeholder="Enter Key (1 - 25)"
+                    min="1"
+                    max="25"
+                    required>
+            </div>
+
+            <button type="submit" class="btn btn-custom">
+                Encrypt
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- DECRYPTION -->
+    <div class="cipher-card">
+
+        <div class="section-title">
+            Decryption
+        </div>
+
+        <form method="POST" action="caesar/decrypt">
+
+            <div class="form-group">
+                <label><strong>Cipher Text</strong></label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    name="inputCipherText"
+                    placeholder="Enter Cipher Text"
+                    pattern="[A-Za-z ]+"
+                    title="Only letters and spaces are allowed"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label><strong>Key</strong></label>
+
+                <input
+                    type="number"
+                    class="form-control"
+                    name="inputKeyCipher"
+                    placeholder="Enter Key (1 - 25)"
+                    min="1"
+                    max="25"
+                    required>
+            </div>
+
+            <button type="submit" class="btn btn-custom">
+                Decrypt
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="footer">
+        Information Security Lab - HUTECH
+    </div>
+
+</div>
+
+</body>
+</html>
+
