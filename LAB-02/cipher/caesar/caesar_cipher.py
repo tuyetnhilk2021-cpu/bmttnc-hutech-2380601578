@@ -9,6 +9,9 @@ class CaesarCipher:
         text = text.upper()
         encrypted_text = [] 
         for letter in text:
+            if letter == " ":
+                encrypted_text.append(" ")
+                continue
             letter_index = self.alphabet.index(letter)
             output_index = (letter_index + key) % alphabet_len
             output_letter = self.alphabet[output_index]
@@ -19,6 +22,9 @@ class CaesarCipher:
         text = text.upper()
         decrypted_text = []
         for letter in text:
+            if letter == " ":
+                decrypted_text.append(" ")
+                continue
             letter_index = self.alphabet.index(letter)
             output_index = (letter_index - key) % alphabet_len
             output_letter = self.alphabet[output_index]
