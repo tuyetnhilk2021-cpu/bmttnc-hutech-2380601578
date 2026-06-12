@@ -9,9 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import os
 
-os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = './platforms'
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -44,7 +42,7 @@ class Ui_MainWindow(object):
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(310, 50, 291, 31))
+        self.label_4.setGeometry(QtCore.QRect(330, 30, 291, 31))
         font = QtGui.QFont()
         font.setPointSize(20)
         font.setBold(True)
@@ -66,9 +64,17 @@ class Ui_MainWindow(object):
         self.txt_cipher_text = QtWidgets.QTextEdit(self.centralwidget)
         self.txt_cipher_text.setGeometry(QtCore.QRect(270, 300, 441, 87))
         self.txt_cipher_text.setObjectName("txt_cipher_text")
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(310, 60, 291, 31))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -87,13 +93,4 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "CAESAR CIPHER"))
         self.btn_encrypt.setText(_translate("MainWindow", "Encrypt"))
         self.btn_decrypt.setText(_translate("MainWindow", "Decrypt"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+        self.label_5.setText(_translate("MainWindow", "Trần Thị Tuyết Nhi - 2380601578"))

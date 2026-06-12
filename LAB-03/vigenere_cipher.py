@@ -14,12 +14,61 @@ class MyApp(QMainWindow):
         self.ui.btn_encrypt.clicked.connect(self.call_api_encrypt)
         self.ui.btn_decrypt.clicked.connect(self.call_api_decrypt)
 
+    def show_error(self, message):
+        QMessageBox.warning(self, "Error", message)
+
+    def show_success(self, message):
+        QMessageBox.information(self, "Success", message)
+
+    def validate_key(self):
+        key = self.ui.txt_key.text().strip()
+
+        if not key:
+            self.show_error("Please enter key!")
+            return None
+
+        if " " in key:
+            self.show_error("Key must not contain spaces!")
+            return None
+
+        if not key.isalpha():
+            self.show_error(
+                "Key must contain only letters (A-Z)!"
+            )
+            return None
+
+        return key
+
     def call_api_encrypt(self):
+
+        plain_text = self.ui.txt_plain_text.toPlainText().strip()
+
+        if not plain_text:
+            self.show_error("Please enter plain text!")
+            return
+
+        if " " in plain_text:
+            self.show_error(
+                "Plain text must not contain spaces!"
+            )
+            return
+
+        if not plain_text.isalpha():
+            self.show_error(
+                "Plain text must contain only letters (A-Z)!"
+            )
+            return
+
+        key = self.validate_key()
+
+        if key is None:
+            return
+
         url = "http://127.0.0.1:500/api/vigenere/encrypt"
 
         payload = {
-            "plain_text": self.ui.txt_plain_text.toPlainText(),
-            "key": self.ui.txt_key.text()
+            "plain_text": plain_text,
+            "key": key
         }
 
         try:
@@ -29,37 +78,69 @@ class MyApp(QMainWindow):
             print("Response text:", response.text)
 
             if response.status_code == 200:
+
                 data = response.json()
 
                 self.ui.txt_cipher_text.setPlainText(
                     data.get("encrypted_text", "")
                 )
 
-                QMessageBox.information(
-                    self,
-                    "Success",
+                self.show_success(
                     "Encrypted Successfully"
                 )
+
             else:
-                QMessageBox.warning(
-                    self,
-                    "Error",
-                    "Error while calling API"
-                )
+                try:
+                    data = response.json()
+
+                    self.show_error(
+                        data.get(
+                            "error",
+                            "Encryption failed!"
+                        )
+                    )
+
+                except:
+                    self.show_error(
+                        "Encryption failed!"
+                    )
 
         except requests.exceptions.RequestException as e:
-            QMessageBox.critical(
-                self,
-                "Error",
-                str(e)
+
+            self.show_error(
+                f"Cannot connect to API!\n{str(e)}"
             )
 
     def call_api_decrypt(self):
+
+        cipher_text = self.ui.txt_cipher_text.toPlainText().strip()
+
+        if not cipher_text:
+            self.show_error("Please enter cipher text!")
+            return
+
+        if " " in cipher_text:
+            self.show_error(
+                "Cipher text must not contain spaces!"
+            )
+            return
+
+        if not cipher_text.isalpha():
+            self.show_error(
+                "Cipher text must contain only letters (A-Z)!"
+            )
+            return
+
+        key = self.validate_key()
+
+        if key is None:
+            return
+
         url = "http://127.0.0.1:500/api/vigenere/decrypt"
 
         payload = {
-            "cipher_text": self.ui.txt_cipher_text.toPlainText(),
-            "key": self.ui.txt_key.text()
+            "cipher_text": cipher_text,
+            "key": key
         }
 
         try:
@@ -69,29 +150,37 @@ class MyApp(QMainWindow):
             print("Response text:", response.text)
 
             if response.status_code == 200:
+
                 data = response.json()
 
                 self.ui.txt_plain_text.setPlainText(
                     data.get("decrypted_text", "")
                 )
 
-                QMessageBox.information(
-                    self,
-                    "Success",
+                self.show_success(
                     "Decrypted Successfully"
                 )
+
             else:
-                QMessageBox.warning(
-                    self,
-                    "Error",
-                    "Error while calling API"
-                )
+                try:
+                    data = response.json()
+
+                    self.show_error(
+                        data.get(
+                            "error",
+                            "Decryption failed!"
+                        )
+                    )
+
+                except:
+                    self.show_error(
+                        "Decryption failed!"
+                    )
 
         except requests.exceptions.RequestException as e:
-            QMessageBox.critical(
-                self,
-                "Error",
-                str(e)
+
+            self.show_error(
+                f"Cannot connect to API!\n{str(e)}"
             )
 
 

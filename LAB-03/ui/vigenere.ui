@@ -17,9 +17,9 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>330</x>
       <y>50</y>
-      <width>201</width>
+      <width>271</width>
       <height>31</height>
      </rect>
     </property>
@@ -31,7 +31,7 @@
      </font>
     </property>
     <property name="text">
-     <string>VIGENERE</string>
+     <string>VIGENERE CIPHER</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -150,6 +150,26 @@
      <string>Decrypt</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>90</y>
+      <width>291</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Trần Thị Tuyết Nhi - 2380601578</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -157,7 +177,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

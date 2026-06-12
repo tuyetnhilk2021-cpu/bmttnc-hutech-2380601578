@@ -9,9 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import os
 
-os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = './platforms'
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -20,7 +18,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(340, 50, 201, 31))
+        self.label_4.setGeometry(QtCore.QRect(330, 50, 271, 31))
         font = QtGui.QFont()
         font.setPointSize(20)
         font.setBold(True)
@@ -66,9 +64,17 @@ class Ui_MainWindow(object):
         self.btn_decrypt = QtWidgets.QPushButton(self.centralwidget)
         self.btn_decrypt.setGeometry(QtCore.QRect(500, 430, 81, 31))
         self.btn_decrypt.setObjectName("btn_decrypt")
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        self.label_5.setGeometry(QtCore.QRect(320, 90, 291, 31))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -81,19 +87,10 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_4.setText(_translate("MainWindow", "VIGENERE"))
+        self.label_4.setText(_translate("MainWindow", "VIGENERE CIPHER"))
         self.label.setText(_translate("MainWindow", "Plain Text:"))
         self.label_2.setText(_translate("MainWindow", "Key:"))
         self.label_3.setText(_translate("MainWindow", "Cipher Text:"))
         self.btn_encrypt.setText(_translate("MainWindow", "Encrypt"))
         self.btn_decrypt.setText(_translate("MainWindow", "Decrypt"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+        self.label_5.setText(_translate("MainWindow", "Trần Thị Tuyết Nhi - 2380601578"))
